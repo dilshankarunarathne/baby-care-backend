@@ -51,7 +51,8 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
         # eye open/close detection
         # TODO
 
-        
+        # pose estimation
+        # TODO
 
         # model_output = model_processing(frame)
 
