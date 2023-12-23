@@ -53,8 +53,14 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
 
         # eye open/close detection
         eyes = detect_eyes(base64_str)
-        print(f"eyes: {eyes}")
-        
+        if eyes is None:
+            print("No face detected")
+        elif eyes:
+            print("Eyes open")
+        else:
+            print("Eyes closed")
+
+
 
         # pose estimation
         # TODO
