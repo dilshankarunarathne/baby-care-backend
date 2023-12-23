@@ -45,8 +45,13 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
         else:
             print("Image decoded successfully")
 
-        # model_output = model_processing(frame)
+        # face recognition
+        # TODO
+
         
+
+        # model_output = model_processing(frame)
+
         # await self.send(text_data=json.dumps({"model_output": model_output}))
         pass
 
