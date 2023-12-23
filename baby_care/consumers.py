@@ -60,8 +60,6 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
         else:
             print("Eyes closed")
 
-
-
         # pose estimation
         # TODO
 
