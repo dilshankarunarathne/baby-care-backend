@@ -40,7 +40,7 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
         frame_data = base64.b64decode(base64_str)
         nparr = np.frombuffer(frame_data, np.uint8)
         frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-        
+
         if frame is None:
             print("error frame is none")
         else:
