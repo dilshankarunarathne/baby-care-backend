@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import base64
 
+
 def detect_eyes(base64_string):
     eye_cascPath = 'haarcascade_eye_tree_eyeglasses.xml'  #eye detect model
     face_cascPath = 'haarcascade_frontalface_alt.xml'  #face detect model
