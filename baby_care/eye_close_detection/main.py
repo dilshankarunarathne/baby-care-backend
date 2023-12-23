@@ -4,6 +4,21 @@ import base64
 
 
 def detect_eyes(base64_string):
+    """
+        Detects whether eyes are open or closed in a base64 encoded image.
+
+        This function decodes the base64 string to get the image data, converts the data to a numpy array,
+        and then uses OpenCV to detect whether the eyes are open or closed. If no face is detected in the image,
+        the function returns None. If a face is detected but no eyes are detected, the function returns False
+        (indicating that the eyes are closed). If a face and eyes are detected, the function returns True
+        (indicating that the eyes are open).
+
+        Args:
+            base64_string (str): The base64 encoded string of the image.
+
+        Returns:
+            bool: True if eyes are open, False if eyes are closed, None if no face is detected.
+    """
     eye_cascPath = 'haarcascade_eye_tree_eyeglasses.xml'  #eye detect model
     face_cascPath = 'haarcascade_frontalface_alt.xml'  #face detect model
     faceCascade = cv2.CascadeClassifier(face_cascPath)
