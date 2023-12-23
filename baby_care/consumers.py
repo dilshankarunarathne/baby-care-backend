@@ -51,6 +51,8 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
         # eye open/close detection
         # TODO
 
+        
+
         # model_output = model_processing(frame)
 
         # await self.send(text_data=json.dumps({"model_output": model_output}))
