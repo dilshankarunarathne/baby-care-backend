@@ -20,7 +20,7 @@ def detect_eyes(base64_string):
             bool: True if eyes are open, False if eyes are closed, None if no face is detected.
     """
     eye_cascPath = 'haarcascade_eye_tree_eyeglasses.xml'
-    face_cascPath = 'haarcascade_frontalface_alt.xml' 
+    face_cascPath = 'haarcascade_frontalface_alt.xml'
     faceCascade = cv2.CascadeClassifier(face_cascPath)
     eyeCascade = cv2.CascadeClassifier(eye_cascPath)
 
