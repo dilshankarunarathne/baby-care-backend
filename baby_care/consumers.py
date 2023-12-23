@@ -44,11 +44,9 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
             print("error frame is none")
         else:
             print("Image decoded successfully")
+
         # model_output = model_processing(frame)
-        #
-        # # update stats
-        # update(model_output[0], model_output[1])
-        #
+        
         # await self.send(text_data=json.dumps({"model_output": model_output}))
         pass
 
