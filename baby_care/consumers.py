@@ -48,7 +48,8 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
         # face recognition
         # TODO
 
-        
+        # eye open/close detection
+        # TODO
 
         # model_output = model_processing(frame)
 
