@@ -10,6 +10,8 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.generic.http import AsyncConsumer
 import json
 
+from baby_care.eye_close_detection.main import detect_eyes
+
 
 class PostConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
