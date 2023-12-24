@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
 
+__pycache__/
+
 # Log file
 *.log
 
@@ -59,3 +61,8 @@ target/
 .sts4-cache
 
 /gz/
+.github/workflows/jekyll-gh-pages.yml
+*.jpg
+*.joblib
+*.caffemodel
+*.prototxt
