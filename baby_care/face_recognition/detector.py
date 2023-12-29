@@ -1,3 +1,5 @@
+import base64
+import io
 import pickle
 import face_recognition
 from pathlib import Path
@@ -15,14 +17,15 @@ TEXT_COLOR = "white"
 
 
 def recognize_faces(
-        image_location: str,
+        base64_image_data,
         model: str = "hog",
         encodings_location: Path = DEFAULT_ENCODINGS_PATH,
 ) -> None:
     with encodings_location.open(mode="rb") as f:
         loaded_encodings = pickle.load(f)
 
-    input_image = face_recognition.load_image_file(image_location)
+    image_data = base64.b64decode(base64_image_data)
+    input_image = face_recognition.load_image_file(io.BytesIO(image_data))
 
     input_face_locations = face_recognition.face_locations(
         input_image, model=model
@@ -76,6 +79,3 @@ def _display_face(draw, bounding_box, name):
         name,
         fill="white",
     )
-
-
-recognize_faces("unknown.jpg")
