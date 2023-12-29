@@ -51,21 +51,22 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
 
         # face recognition
         recognized_name = recognize_faces(base64_str)
-        print("Face identified as: " , recognized_name)
+        print("Face identified as: ", recognized_name)
 
         # eye open/close detection
         eyes = detect_eyes(base64_str)
         if eyes is None:
-            print("No face detected")
+            etxt = "No face detected"
         elif eyes:
-            print("Eyes open")
+            etxt = "Eyes open"
         else:
-            print("Eyes closed")
+            etxt = "Eyes closed"
+        print(etxt)
 
         # pose estimation
-        # TODO
+        pose = None
 
-        # await self.send(text_data=json.dumps({"model_output": model_output}))
+        await self.send(text_data=json.dumps({"recognized_name": recognized_name, "eyes": etxt, "pose": pose}))
         pass
 
 
