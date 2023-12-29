@@ -17,37 +17,25 @@ TEXT_COLOR = "white"
 
 
 def recognize_faces(
-        base64_image_data,
-        model: str = "hog",
-        encodings_location: Path = DEFAULT_ENCODINGS_PATH,
-) -> None:
+        base64_image_data, model: str = "hog", encodings_location: Path = DEFAULT_ENCODINGS_PATH
+) -> list:
+    """Recognizes faces in a base64-encoded image string and returns a list of detected names."""
+
     with encodings_location.open(mode="rb") as f:
         loaded_encodings = pickle.load(f)
 
     image_data = base64.b64decode(base64_image_data)
     input_image = face_recognition.load_image_file(io.BytesIO(image_data))
 
-    input_face_locations = face_recognition.face_locations(
-        input_image, model=model
-    )
-    input_face_encodings = face_recognition.face_encodings(
-        input_image, input_face_locations
-    )
+    input_face_locations = face_recognition.face_locations(input_image, model=model)
+    input_face_encodings = face_recognition.face_encodings(input_image, input_face_locations)
 
-    pillow_image = Image.fromarray(input_image)
-    draw = ImageDraw.Draw(pillow_image)
-
-    for bounding_box, unknown_encoding in zip(
-            input_face_locations, input_face_encodings
-    ):
+    names = []
+    for unknown_encoding in input_face_encodings:
         name = _recognize_face(unknown_encoding, loaded_encodings)
-        if not name:
-            name = "Unknown"
-        # print(name, bounding_box)
-        _display_face(draw, bounding_box, name)
+        names.append(name if name else "Unknown")
 
-    del draw
-    pillow_image.show()
+    return names
 
 
 def _recognize_face(unknown_encoding, loaded_encodings):
@@ -61,21 +49,3 @@ def _recognize_face(unknown_encoding, loaded_encodings):
     )
     if votes:
         return votes.most_common(1)[0][0]
-
-
-def _display_face(draw, bounding_box, name):
-    top, right, bottom, left = bounding_box
-    draw.rectangle(((left, top), (right, bottom)), outline=BOUNDING_BOX_COLOR)
-    text_left, text_top, text_right, text_bottom = draw.textbbox(
-        (left, bottom), name
-    )
-    draw.rectangle(
-        ((text_left, text_top), (text_right, text_bottom)),
-        fill="blue",
-        outline="blue",
-    )
-    draw.text(
-        (text_left, text_top),
-        name,
-        fill="white",
-    )
