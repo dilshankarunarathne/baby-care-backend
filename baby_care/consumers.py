@@ -11,6 +11,7 @@ from channels.generic.http import AsyncConsumer
 import json
 
 from baby_care.eye_close_detection.main import detect_eyes
+from baby_care.face_recognition.detector import recognize_faces
 
 
 class PostConsumer(AsyncConsumer):
@@ -49,7 +50,7 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
             print("Image decoded successfully")
 
         # face recognition
-        # TODO
+        recognize_faces(base64_str)
 
         # eye open/close detection
         eyes = detect_eyes(base64_str)
@@ -74,19 +75,3 @@ def check_base64_image(base64_string, output_file):
         print(f"Image written to {output_file}. Please check if it's a valid image.")
     except Exception as e:
         print(f"Failed to decode and write image: {e}")
-
-
-def model_processing(frame):
-    if frame is None:
-        print("image empty")
-
-    # # predict age & gender
-    # age, gender = classifier.predict_age_and_gender(frame)
-    #
-    # # predict interest
-    # recommended_interest = predict_interest(age, gender)
-    #
-    # # get ads
-    # ads = fetch_ad_images(age, gender)
-    #
-    # return age, gender, recommended_interest, send_ads
