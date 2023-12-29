@@ -50,7 +50,8 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
             print("Image decoded successfully")
 
         # face recognition
-        recognize_faces(base64_str)
+        recognized_name = recognize_faces(base64_str)
+        print("Face identified as: " , recognized_name)
 
         # eye open/close detection
         eyes = detect_eyes(base64_str)
