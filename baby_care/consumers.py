@@ -67,7 +67,6 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
         pose = None
 
         await self.send(text_data=json.dumps({"recognized_name": recognized_name, "eyes": etxt, "pose": pose}))
-        pass
 
 
 def check_base64_image(base64_string, output_file):
