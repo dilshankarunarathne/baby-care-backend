@@ -22,6 +22,18 @@ def detect_face_or_not(img):
         Returns:
             bool: True if eyes are open, False if eyes are closed, None if no face is detected.
     """
+    
+        faces = faceCascade.detectMultiScale(
+            img,
+            scaleFactor=1.1,
+            minNeighbors=5,
+            minSize=(30, 30),
+        )
+
+        if len(faces) > 0:
+            return True  # Face is detected
+        else:
+            return False  # No face detected
 
 
 def detect_eyes(img):
