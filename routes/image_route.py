@@ -14,6 +14,11 @@ async def verify_baby_image_endpoint(
         image: UploadFile = File(...),
         token: str = Depends(oauth2_scheme)
 ):
+    user = await get_current_user(token)
+
+    if user is None:
+        raise credentials_exception
+    
     pass
 
 
