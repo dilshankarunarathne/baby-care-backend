@@ -13,4 +13,5 @@ router = APIRouter(
 async def verify_baby_image_endpoint(
         image: UploadFile = File(...),
         token: str = Depends(oauth2_scheme)
-)
+):
+    pass
