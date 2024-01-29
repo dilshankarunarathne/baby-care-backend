@@ -3,7 +3,7 @@ import numpy as np
 from fastapi import APIRouter, UploadFile, File, Depends
 
 from auth.authorize import oauth2_scheme, get_current_user, credentials_exception
-from eye_close_detection.main import detect_eyes, detect_face_or_not
+from eye_close_detection.main import detect_eyes, detect_face_or_not, check_image_for_minors
 from face_rec.detector import recognize_faces
 
 router = APIRouter(
@@ -71,10 +71,13 @@ async def check_baby_image_endpoint(
     eyes = detect_eyes(frame)
     eye_text = _get_eye_text(eyes)
 
+    # baby detection trial 2
+    baby_det = check_image_for_minors(frame)
+
     # TODO estimate sleep position
 
     # return data
-    return {"eyes": eye_text, "face": face_text}
+    return {"eyes": eye_text, "face": face_text, "baby": baby_det}
 
 
 def _get_face_text(face_data):

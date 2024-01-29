@@ -4,6 +4,7 @@ import base64
 
 eye_cascPath = 'eye_close_detection/haarcascade_eye_tree_eyeglasses.xml'
 face_cascPath = 'eye_close_detection/haarcascade_frontalface_alt.xml'
+face_cascade = cv2.CascadeClassifier("eye_close_detection/haarcascade_frontalface_default.xml")
 faceCascade = cv2.CascadeClassifier(face_cascPath)
 eyeCascade = cv2.CascadeClassifier(eye_cascPath)
 
@@ -78,3 +79,25 @@ def detect_eyes(img):
             return True  # Eyes are open
     else:
         return None  # No face detected
+
+
+def check_image_for_minors(frame):
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    faces = face_cascade.detectMultiScale(frame, 1.3, 5)
+
+    print("Found {0} faces!".format(len(faces)))
+
+    result_frame = frame.copy()
+    if len(faces) != 0:  # If there are faces in the images
+        for (x, y, w, h) in faces:  # For each face in the image
+            # get the rectangle img around all the faces
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 255, 0), 5)
+            sub_face = frame[y:y + h, x:x + w]
+
+            # apply a gaussian blur on this new recangle image
+            sub_face = cv2.GaussianBlur(sub_face, (23, 23), 30)
+            # merge this blurry rectangle to our final image
+            result_frame[y:y + sub_face.shape[0], x:x + sub_face.shape[1]] = sub_face
+
+    return len(faces) > 0  # Return True if a face is detected, False otherwise
