@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, Depends
 
-from auth.authorize import oauth2_scheme
+from auth.authorize import oauth2_scheme, get_current_user, credentials_exception
 
 router = APIRouter(
     prefix="/api/image",
@@ -31,5 +31,5 @@ async def check_baby_image_endpoint(
 
     if user is None:
         raise credentials_exception
-    
+
     pass
