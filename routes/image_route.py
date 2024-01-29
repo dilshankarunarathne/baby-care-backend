@@ -35,6 +35,7 @@ async def verify_baby_image_endpoint(
             print("Image decoded successfully")
 
     # detect face
+    faces = recognize_faces(frame)
 
 
 @router.post("/check")
