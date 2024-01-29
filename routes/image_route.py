@@ -64,6 +64,8 @@ async def check_baby_image_endpoint(
             print("Image decoded successfully")
 
     # check if image is a baby
+    face = detect_face_or_not(frame)
+    face_text = _get_face_text(face)
 
     # check if baby is asleep
     eyes = detect_eyes(frame)
