@@ -76,6 +76,16 @@ async def check_baby_image_endpoint(
     return {"eyes": eye_text}
 
 
+def _get_face_text(face_data):
+    # True if face is detected, False if no face is detected.
+    if face_data is None:
+        return "No face detected"
+    elif face_data:
+        return "Face detected"
+    else:
+        return "No face detected"
+
+
 def _get_eye_text(eye_data):
     # True if eyes are open, False if eyes are closed, None if no face is detected.
     if eye_data is None:
