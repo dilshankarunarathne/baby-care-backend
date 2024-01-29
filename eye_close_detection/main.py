@@ -8,6 +8,9 @@ faceCascade = cv2.CascadeClassifier(face_cascPath)
 eyeCascade = cv2.CascadeClassifier(eye_cascPath)
 
 
+def detect_face_or_not(img):
+
+
 def detect_eyes(img):
     """
         Detects whether eyes are open or closed in a base64 encoded image.
