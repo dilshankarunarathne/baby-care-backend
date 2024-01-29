@@ -45,7 +45,7 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
         frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
         if frame is None:
-            print("error frame is none")
+            print("error: frame is none")
         else:
             print("Image decoded successfully")
 
