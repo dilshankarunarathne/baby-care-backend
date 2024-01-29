@@ -1,5 +1,7 @@
 from fastapi import APIRouter, UploadFile, File, Depends
 
+from auth.authorize import oauth2_scheme
+
 router = APIRouter(
     prefix="/api/image",
     tags=["image"],
