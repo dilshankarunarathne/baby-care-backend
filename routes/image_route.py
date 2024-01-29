@@ -17,4 +17,4 @@ async def verify_baby_image_endpoint(
     pass
 
 
-
+@router.post("/check")
