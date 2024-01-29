@@ -9,6 +9,17 @@ eyeCascade = cv2.CascadeClassifier(eye_cascPath)
 
 
 def detect_face_or_not(img):
+    """
+        Detects whether a face is detected or not in a image.
+
+
+
+        Args:
+            img (str): string of the image.
+
+        Returns:
+            bool: True if eyes are open, False if eyes are closed, None if no face is detected.
+    """
 
 
 def detect_eyes(img):
@@ -22,7 +33,7 @@ def detect_eyes(img):
         (indicating that the eyes are open).
 
         Args:
-            base64_string (str): The base64 encoded string of the image.
+            img (str): string of the image.
 
         Returns:
             bool: True if eyes are open, False if eyes are closed, None if no face is detected.
