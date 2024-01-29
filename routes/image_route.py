@@ -1,3 +1,6 @@
+import base64
+import re
+
 import cv2
 import numpy as np
 from fastapi import APIRouter, UploadFile, File, Depends
@@ -22,6 +25,16 @@ async def verify_baby_image_endpoint(
     if user is None:
         raise credentials_exception
 
+    base64_str = re.search(r'base64,(.*)', image).group(1)
+    frame_data = base64.b64decode(base64_str)
+    nparr = np.frombuffer(frame_data, np.uint8)
+    frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    if frame is None:
+        print("error frame is none")
+    else:
+        print("Image decoded successfully")
+    print(frame)
+
     pass
 
 
@@ -40,13 +53,18 @@ async def check_baby_image_endpoint(
         return {300: {"description": "Only jpeg images are supported"}}
     else:
         contents = await image.read()
-        nparray = np.fromstring(contents, np.uint8)
-        encoded_image = cv2.imdecode(nparray, cv2.IMREAD_COLOR)
+        nparr = np.frombuffer(contents, np.uint8)
+        frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        if frame is None:
+            print("error frame is none")
+        else:
+            print("Image decoded successfully: ", frame)
+        print(frame)
 
     # check if image is a baby
 
     # check if baby is asleep
-    eyes = detect_eyes(encoded_image)
+    eyes = detect_eyes(frame)
     eye_text = _get_eye_text(eyes)
 
     # estimate sleep position
