@@ -12,7 +12,9 @@ def detect_face_or_not(img):
     """
         Detects whether a face is detected or not in a image.
 
-
+        This function decodes the base64 string to get the image data, converts the data to a numpy array,
+        and then uses OpenCV to detect whether a face is detected or not. If no face is detected in the image,
+        the function returns False. If a face is detected, the function returns True.
 
         Args:
             img (str): string of the image.
