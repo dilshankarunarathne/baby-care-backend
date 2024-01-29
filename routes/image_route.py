@@ -1,3 +1,5 @@
+import cv2
+import numpy as np
 from fastapi import APIRouter, UploadFile, File, Depends
 
 from auth.authorize import oauth2_scheme, get_current_user, credentials_exception
@@ -39,8 +41,8 @@ async def check_baby_image_endpoint(
     else:
         contents = await image.read()
         nparray = np.fromstring(contents, np.uint8)
-        img = cv2.imdecode(nparray, cv2.IMREAD_COLOR)
-        
+        encoded_image = cv2.imdecode(nparray, cv2.IMREAD_COLOR)
+
     # check if image is a baby
 
     # check if baby is asleep
