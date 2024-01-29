@@ -25,17 +25,19 @@ async def verify_baby_image_endpoint(
     if user is None:
         raise credentials_exception
 
-    base64_str = re.search(r'base64,(.*)', image).group(1)
-    frame_data = base64.b64decode(base64_str)
-    nparr = np.frombuffer(frame_data, np.uint8)
-    frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    if frame is None:
-        print("error frame is none")
+    # decode image data
+    if image and image.content_type != "image/jpeg":
+        return {300: {"description": "Only jpeg images are supported"}}
     else:
-        print("Image decoded successfully")
-    print(frame)
+        contents = await image.read()
+        nparr = np.frombuffer(contents, np.uint8)
+        frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        if frame is None:
+            print("error frame is none")
+        else:
+            print("Image decoded successfully")
 
-    pass
+    # detect face
 
 
 @router.post("/check")
@@ -58,8 +60,7 @@ async def check_baby_image_endpoint(
         if frame is None:
             print("error frame is none")
         else:
-            print("Image decoded successfully: ", frame)
-        print(frame)
+            print("Image decoded successfully")
 
     # check if image is a baby
 
