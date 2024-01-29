@@ -1,6 +1,7 @@
 from fastapi import APIRouter, UploadFile, File, Depends
 
 from auth.authorize import oauth2_scheme, get_current_user, credentials_exception
+from eye_close_detection.main import detect_eyes
 
 router = APIRouter(
     prefix="/api/image",
@@ -32,6 +33,14 @@ async def check_baby_image_endpoint(
     if user is None:
         raise credentials_exception
 
+    # decode image data
+    if image and image.content_type != "image/jpeg":
+        return {300: {"description": "Only jpeg images are supported"}}
+    else:
+        contents = await image.read()
+        nparray = np.fromstring(contents, np.uint8)
+        img = cv2.imdecode(nparray, cv2.IMREAD_COLOR)
+        
     # check if image is a baby
 
     # check if baby is asleep
