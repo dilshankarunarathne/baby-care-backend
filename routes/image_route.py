@@ -32,4 +32,9 @@ async def check_baby_image_endpoint(
     if user is None:
         raise credentials_exception
 
-    pass
+    # check if image is a baby
+
+    # check if baby is asleep
+    detect_eyes(encoded_image)
+
+    # estimate sleep position
