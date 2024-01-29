@@ -3,7 +3,7 @@ import numpy as np
 from fastapi import APIRouter, UploadFile, File, Depends
 
 from auth.authorize import oauth2_scheme, get_current_user, credentials_exception
-from eye_close_detection.main import detect_eyes
+from eye_close_detection.main import detect_eyes, detect_face_or_not
 from face_rec.detector import recognize_faces
 
 router = APIRouter(
