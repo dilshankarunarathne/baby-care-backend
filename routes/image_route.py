@@ -18,3 +18,8 @@ async def verify_baby_image_endpoint(
 
 
 @router.post("/check")
+async def check_baby_image_endpoint(
+        image: UploadFile = File(...),
+        token: str = Depends(oauth2_scheme)
+):
+    pass
