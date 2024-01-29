@@ -9,5 +9,6 @@ router = APIRouter(
 
 @router.post("/verify")
 async def verify_baby_image_endpoint(
-        image: UploadFile = File(...)
+        image: UploadFile = File(...),
+        token: str = Depends(oauth2_scheme)
 )
