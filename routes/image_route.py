@@ -93,8 +93,8 @@ def _get_face_text(face_data):
 def _get_eye_text(eye_data):
     # True if eyes are open, False if eyes are closed, None if no face is detected.
     if eye_data is None:
-        return "No face detected"
+        return "Baby is asleep"
     elif eye_data:
-        return "Eyes are open"
+        return "Baby is awake"
     else:
-        return "Eyes are closed"
+        return "Baby is asleep"
