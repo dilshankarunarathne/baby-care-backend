@@ -8,7 +8,7 @@ faceCascade = cv2.CascadeClassifier(face_cascPath)
 eyeCascade = cv2.CascadeClassifier(eye_cascPath)
 
 
-def detect_face_or_not(img):
+def detect_face_or_not(img):    # TODO bugfix
     """
         Detects whether a face is detected or not in a image.
 
