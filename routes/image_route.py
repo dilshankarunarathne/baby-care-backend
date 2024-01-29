@@ -1,6 +1,3 @@
-import base64
-import re
-
 import cv2
 import numpy as np
 from fastapi import APIRouter, UploadFile, File, Depends
