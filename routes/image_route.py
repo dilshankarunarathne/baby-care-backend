@@ -4,6 +4,7 @@ from fastapi import APIRouter, UploadFile, File, Depends
 
 from auth.authorize import oauth2_scheme, get_current_user, credentials_exception
 from eye_close_detection.main import detect_eyes
+from face_rec.detector import recognize_faces
 
 router = APIRouter(
     prefix="/api/image",
@@ -36,6 +37,8 @@ async def verify_baby_image_endpoint(
 
     # detect face
     faces = recognize_faces(frame)
+
+    return {"faces": faces}
 
 
 @router.post("/check")
