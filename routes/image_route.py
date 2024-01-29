@@ -46,6 +46,19 @@ async def check_baby_image_endpoint(
     # check if image is a baby
 
     # check if baby is asleep
-    detect_eyes(encoded_image)
+    eyes = detect_eyes(encoded_image)
+    eye_text = _get_eye_text(eyes)
 
     # estimate sleep position
+
+    return {"eyes": eye_text}
+
+
+def _get_eye_text(eye_data):
+    # True if eyes are open, False if eyes are closed, None if no face is detected.
+    if eye_data is None:
+        return "No face detected"
+    elif eye_data:
+        return "Eyes are open"
+    else:
+        return "Eyes are closed"
