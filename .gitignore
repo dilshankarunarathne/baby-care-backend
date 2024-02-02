@@ -68,3 +68,4 @@ target/
 *.joblib
 *.caffemodel
 *.prototxt
+posture/keras_model.h5
