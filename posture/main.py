@@ -12,8 +12,6 @@ class_names = open(labels_path, "r").readlines()
 
 
 def analyze_posture(img_data):
-    # Replace this with the path to your image in Google Drive
-    image_path = "test.jpg"
     image = Image.open(image_path).convert("RGB")
 
     # resizing the image to be at least 224x224 and then cropping from the center
