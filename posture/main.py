@@ -42,3 +42,5 @@ def analyze_posture(img_data):
     # Print prediction and confidence score
     print("Class:", class_name[2:])
     print("Confidence Score:", confidence_score)
+
+    
