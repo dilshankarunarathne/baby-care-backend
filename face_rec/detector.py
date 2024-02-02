@@ -28,6 +28,7 @@ def recognize_faces(frame, model: str = "hog", encodings_location: Path = DEFAUL
     names = []
     for unknown_encoding in input_face_encodings:
         name = _recognize_face(unknown_encoding, loaded_encodings)
+        print(f"Votes: {name}")  # Print the votes for debugging
         names.append(name if name else "Unknown")
 
     return names
@@ -42,5 +43,7 @@ def _recognize_face(unknown_encoding, loaded_encodings):
         for match, name in zip(boolean_matches, loaded_encodings["names"])
         if match
     )
+    print(f"Boolean Matches: {boolean_matches}")  # Print the boolean matches for debugging
+    print(f"Votes: {votes}")  # Print the votes for debugging
     if votes:
         return votes.most_common(1)[0][0]

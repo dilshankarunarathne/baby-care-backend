@@ -77,7 +77,8 @@ async def check_baby_image_endpoint(
     # TODO estimate sleep position
 
     # return data
-    return {"sleep": eye_text, "face": face_text, "baby": baby_det}
+    # return {"sleep": eye_text, "face": face_text, "baby": baby_det}
+    return {"sleep": eye_text}
 
 
 def _get_face_text(face_data):
