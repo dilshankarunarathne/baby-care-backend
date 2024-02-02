@@ -5,6 +5,7 @@ from fastapi import APIRouter, UploadFile, File, Depends
 from auth.authorize import oauth2_scheme, get_current_user, credentials_exception
 from eye_close_detection.main import detect_eyes, detect_face_or_not, check_image_for_minors
 from face_rec.detector import recognize_faces
+from posture.main import analyze_posture
 
 router = APIRouter(
     prefix="/api/image",
