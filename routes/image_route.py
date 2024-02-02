@@ -80,7 +80,7 @@ async def check_baby_image_endpoint(
 
     # return data
     # return {"sleep": eye_text, "face": face_text, "baby": baby_det}
-    return {"sleep": eye_text}
+    return {"sleep": eye_text, "pose": pose}
 
 
 def _get_face_text(face_data):
