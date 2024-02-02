@@ -12,7 +12,7 @@ class_names = open(labels_path, "r").readlines()
 
 
 def analyze_posture(img_data):
-    image = Image.open(image_path).convert("RGB")
+    # image = Image.open(image_path).convert("RGB")
 
     # resizing the image to be at least 224x224 and then cropping from the center
     size = (224, 224)
