@@ -12,7 +12,9 @@ class_names = open(labels_path, "r").readlines()
 
 
 def analyze_posture(img_data):
-    # image = Image.open(image_path).convert("RGB")
+    # Convert the numpy array back to an image
+    img_data = cv2.cvtColor(img_data, cv2.COLOR_BGR2RGB)
+    image = Image.fromarray(img_data)
 
     # resizing the image to be at least 224x224 and then cropping from the center
     size = (224, 224)
