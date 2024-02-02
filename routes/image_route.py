@@ -78,8 +78,6 @@ async def check_baby_image_endpoint(
     # estimate sleep position
     pose, pose_confidence = analyze_posture(frame)
 
-    # return data
-    # return {"sleep": eye_text, "face": face_text, "baby": baby_det}
     return {"sleep": eye_text, "pose": pose}
 
 
