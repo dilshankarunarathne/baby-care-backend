@@ -16,6 +16,7 @@ def encode_known_faces(
     encodings = []
     for filepath in Path("training").glob("*/*"):
         name = filepath.parent.name
+        print(".")
         image = face_recognition.load_image_file(filepath)
 
         face_locations = face_recognition.face_locations(image, model=model)
