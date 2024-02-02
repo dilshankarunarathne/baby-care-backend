@@ -43,4 +43,4 @@ def analyze_posture(img_data):
     print("Class:", class_name[2:])
     print("Confidence Score:", confidence_score)
 
-    
+    return class_name[2:], confidence_score
