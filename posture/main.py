@@ -9,3 +9,6 @@ model = load_model(model_path, compile=False)
 # Load the labels
 labels_path = "labels.txt"
 class_names = open(labels_path, "r").readlines()
+
+
+
