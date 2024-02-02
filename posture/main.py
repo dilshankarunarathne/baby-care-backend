@@ -11,4 +11,4 @@ labels_path = "labels.txt"
 class_names = open(labels_path, "r").readlines()
 
 
-
+def analyze_posture(img_data):
