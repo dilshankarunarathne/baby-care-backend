@@ -69,3 +69,4 @@ target/
 *.caffemodel
 *.prototxt
 posture/keras_model.h5
+face_rec/keras_model.h5
