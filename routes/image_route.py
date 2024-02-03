@@ -98,7 +98,7 @@ async def check_baby_image_endpoint(
     if _get_last_name() == class_name:
         return {"sleep": eye_text, "pose": pose}
     else:
-        return {"message": "Baby not detected"}
+        return {"message": "The image does not match the verification image"}
 
 
 def _get_face_text(face_data):
