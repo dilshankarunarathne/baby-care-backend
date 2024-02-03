@@ -14,6 +14,8 @@ router = APIRouter(
     responses={404: {"description": "The requested url was not found"}},
 )
 
+last_name = "Unknown"
+
 
 @router.post("/verify")
 async def verify_baby_image_endpoint(
