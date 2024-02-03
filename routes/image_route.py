@@ -95,10 +95,10 @@ async def check_baby_image_endpoint(
     pose, pose_confidence = analyze_posture(frame)
     print("last name: ", last_name, " class name: ", class_name)
 
-    if last_name == "Unknown":
-        return {"message": "Baby not detected"}
-    elif last_name == class_name:
+    if _get_last_name() == class_name:
         return {"sleep": eye_text, "pose": pose}
+    else:
+        return {"message": "Baby not detected"}
 
 
 def _get_face_text(face_data):
