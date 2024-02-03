@@ -51,7 +51,7 @@ async def verify_baby_image_endpoint(
     # analyze image
     class_name, confidence_score = analyze_image(frame)
 
-    last_name = class_name
+    _set_last_name(class_name)
 
     return {"name": class_name, "confidence_score": confidence_score}
 
