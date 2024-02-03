@@ -86,7 +86,7 @@ async def check_baby_image_endpoint(
     if last_name == "Unknown":
         return {"message": "Baby not detected"}
     elif last_name == class_name:
-        return {"message": "Baby detected"}
+        return {"sleep": eye_text, "pose": pose}
 
     # return data
     return {"sleep": eye_text, "pose": pose}
