@@ -11,6 +11,7 @@ model = load_model("face_rec/keras_Model.h5", compile=False)
 # Load the labels
 class_names = open("face_rec/labels.txt", "r").readlines()
 
+
 def analyze_image(img_data):
     # Convert the numpy array back to an image
     image = Image.fromarray(img_data)
@@ -34,8 +35,8 @@ def analyze_image(img_data):
     # Predicts the model
     prediction = model.predict(data)
     index = np.argmax(prediction)
-    class_name = class_names[index]
-    confidence_score = prediction[0][index]
+    class_name = class_names[index].strip()  # strip() is used to remove any leading or trailing white spaces
+    confidence_score = float(prediction[0][index])  # convert numpy.float32 to native Python float
 
     # return prediction and confidence score
-    return class_name[2:], confidence_score
+    return class_name, confidence_score
