@@ -78,7 +78,7 @@ async def check_baby_image_endpoint(
     # baby detection trial 2
     # baby_det = check_image_for_minors(frame)
 
-    
+    class_name, confidence_score = analyze_image(frame)
 
     # estimate sleep position
     pose, pose_confidence = analyze_posture(frame)
