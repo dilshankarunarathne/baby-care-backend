@@ -38,4 +38,4 @@ def analyze_image(img_data):
     confidence_score = prediction[0][index]
 
     # return prediction and confidence score
-
+    return class_name[2:], confidence_score
