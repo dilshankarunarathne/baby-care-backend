@@ -20,7 +20,9 @@ def _get_last_name():
     return last_name
 
 
-
+def _set_last_name(name):
+    global last_name
+    last_name = name
 
 
 @router.post("/verify")
