@@ -37,10 +37,10 @@ async def verify_baby_image_endpoint(
         else:
             print("Image decoded successfully")
 
-    # detect face
-    faces = analyze_image(frame)
+    # analyze image
+    class_name, confidence_score = analyze_image(frame)
 
-    return {"faces": faces}
+    return {"class": class_name, "confidence_score": confidence_score}
 
 
 @router.post("/check")
