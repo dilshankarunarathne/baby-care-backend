@@ -38,7 +38,7 @@ async def verify_baby_image_endpoint(
             print("Image decoded successfully")
 
     # detect face
-    faces = analyze_image()
+    faces = analyze_image(frame)
 
     return {"faces": faces}
 
