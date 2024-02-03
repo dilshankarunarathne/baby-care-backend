@@ -90,9 +90,6 @@ async def check_baby_image_endpoint(
     elif last_name == class_name:
         return {"sleep": eye_text, "pose": pose}
 
-    # return data
-    return {"sleep": eye_text, "pose": pose}
-
 
 def _get_face_text(face_data):
     # True if face is detected, False if no face is detected.
