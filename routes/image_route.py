@@ -18,7 +18,10 @@ global last_name
 
 
 def _get_last_name():
-    return last_name
+    if last_name is None:
+        return ""
+    else:
+        return last_name
 
 
 def _set_last_name(name):
