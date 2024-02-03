@@ -84,6 +84,7 @@ async def check_baby_image_endpoint(
 
     # estimate sleep position
     pose, pose_confidence = analyze_posture(frame)
+    print("last name: ", last_name, " class name: ", class_name)
 
     if last_name == "Unknown":
         return {"message": "Baby not detected"}
