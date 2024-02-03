@@ -16,6 +16,12 @@ router = APIRouter(
 
 last_name = "Unknown"
 
+def _get_last_name():
+    return last_name
+
+
+
+
 
 @router.post("/verify")
 async def verify_baby_image_endpoint(
