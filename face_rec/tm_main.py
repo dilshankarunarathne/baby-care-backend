@@ -6,10 +6,10 @@ import numpy as np
 np.set_printoptions(suppress=True)
 
 # Load the model
-model = load_model("keras_Model.h5", compile=False)
+model = load_model("face_rec/keras_Model.h5", compile=False)
 
 # Load the labels
-class_names = open("labels.txt", "r").readlines()
+class_names = open("face_rec/labels.txt", "r").readlines()
 
 def analyze_image(img_data):
     # Convert the numpy array back to an image
