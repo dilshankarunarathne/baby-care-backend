@@ -15,6 +15,7 @@ router = APIRouter(
 )
 
 global last_name
+last_name = None    
 
 
 def _get_last_name():
