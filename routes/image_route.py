@@ -67,14 +67,14 @@ async def check_baby_image_endpoint(
 
     # check if image is a baby
     face = detect_face_or_not(frame)
-    face_text = _get_face_text(face)
+    # face_text = _get_face_text(face)
 
     # check if baby is asleep
     eyes = detect_eyes(frame)
     eye_text = _get_eye_text(eyes)
 
     # baby detection trial 2
-    baby_det = check_image_for_minors(frame)
+    # baby_det = check_image_for_minors(frame)
 
     # estimate sleep position
     pose, pose_confidence = analyze_posture(frame)
