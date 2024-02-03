@@ -14,7 +14,7 @@ router = APIRouter(
     responses={404: {"description": "The requested url was not found"}},
 )
 
-last_name = "Unknown"
+global last_name
 
 def _get_last_name():
     return last_name
