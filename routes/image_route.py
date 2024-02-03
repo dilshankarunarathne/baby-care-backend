@@ -40,7 +40,7 @@ async def verify_baby_image_endpoint(
     # analyze image
     class_name, confidence_score = analyze_image(frame)
 
-    return {"class": class_name, "confidence_score": confidence_score}
+    return {"name": class_name, "confidence_score": confidence_score}
 
 
 @router.post("/check")
